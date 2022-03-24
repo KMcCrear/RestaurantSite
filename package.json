@@ -1,0 +1,24 @@
+{
+  "name": "restaurantsite",
+  "version": "1.0.0",
+  "description": "Web Development 2 Restaurant Web Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KMcCrear/RestaurantSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KMcCrear/RestaurantSite/issues"
+  },
+  "homepage": "https://github.com/KMcCrear/RestaurantSite#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "nedb": "^1.8.0",
+    "path": "^0.12.7"
+  }
+}
