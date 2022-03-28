@@ -44,4 +44,23 @@ class User {
 			});
 		});
 	}
+
+	login(username, password) {
+		return new Promise((resolve, reject) => {
+			this.db.find(
+				{ username: username, password: password },
+				(err, result) => {
+					if (err) {
+						console.log(err);
+						reject(err);
+					} else {
+						resolve(result);
+						console.log("Logged in");
+					}
+				}
+			);
+		});
+	}
 }
+
+module.exports = User;
