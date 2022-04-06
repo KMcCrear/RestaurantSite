@@ -6,6 +6,11 @@ app.use(express.urlencoded({ extended: false }));
 
 const path = require("path");
 app.use("/", router);
+const public = path.join(__dirname, "public");
+
+const mustache = require("mustache-express");
+app.engine("mustache", mustache());
+app.set("view engine", "mustache");
 
 const $PORT = 3001;
 

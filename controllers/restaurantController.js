@@ -17,7 +17,7 @@ exports.getLaCarte = (req, res) => {
 
 exports.getSetMenu = (req, res) => {
 	res.send("<h1>Set Menu</h1>");
-	menuDB.getSetMenu();
+	menuDB.getLunchMenu();
 };
 
 exports.getDrinksMenu = (req, res) => {

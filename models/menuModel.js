@@ -29,7 +29,7 @@ class Menu {
 						desert: { items: [] },
 					},
 				},
-				set_menu: {
+				lunch_menu: {
 					courses: {
 						starter: { items: [] },
 						mains: { items: [] },
@@ -73,14 +73,14 @@ class Menu {
 		});
 	}
 
-	getSetMenu() {
+	getLunchMenu() {
 		return new Promise((resolve, reject) => {
 			this.db.find({}, (err, menus) => {
 				if (err) {
 					reject(err);
 				} else {
 					resolve(menus);
-					console.log("menus", menus[0].menu.set_menu);
+					console.log("menus", menus[0].menu.lunch_menu);
 				}
 			});
 		});
