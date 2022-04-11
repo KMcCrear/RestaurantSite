@@ -10,19 +10,14 @@ exports.getMenus = (req, res) => {
 	menuDB.getAllMenus();
 };
 
-exports.getLaCarte = (req, res) => {
+exports.getDinnerMenu = (req, res) => {
 	res.send("<h1>A La Carte</h1>");
-	menuDB.getALaCarte();
+	menuDB.getDinnerMenu();
 };
 
-exports.getSetMenu = (req, res) => {
+exports.getLunchMenu = (req, res) => {
 	res.send("<h1>Set Menu</h1>");
 	menuDB.getLunchMenu();
-};
-
-exports.getDrinksMenu = (req, res) => {
-	res.send("<h1>Drinks</h1>");
-	menuDB.getDrinksMenu();
 };
 
 exports.login = (req, res) => {

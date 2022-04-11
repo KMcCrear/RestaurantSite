@@ -3,9 +3,9 @@ const router = express.Router();
 const controller = require("../controllers/restaurantController");
 
 router.get("/", controller.getMenus);
-router.get("/menus/alacarte", controller.getLaCarte);
-router.get("/menusdrinkmenu", controller.getLunchMenu);
-router.get("/menus/drinksmenu", controller.getDrinksMenu);
+router.get("/menus/dinner", controller.getDinnerMenu);
+router.get("/menues/lunch", controller.getLunchMenu);
+
 router.get("/login", controller.login);
 
 router.use(function (req, res) {

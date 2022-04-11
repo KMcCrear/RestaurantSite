@@ -11,63 +11,37 @@ class Menu {
 
 	init() {
 		this.db.insert({
-			menu: {
-				a_la_carte: {
-					courses: {
-						starter: {
-							items: [
-								{
-									name: "Burger",
-									description: "Cheese Burger on a bun",
-									price: 10,
-									allergens: "Wheat, Gltuen",
-									ingrdients: "Beef, Cheese, Lettuce, Tomato, Mustard",
-								},
-							],
-						},
-						mains: { items: [] },
-						desert: { items: [] },
-					},
-				},
-				lunch_menu: {
-					courses: {
-						starter: { items: [] },
-						mains: { items: [] },
-						desert: { items: [] },
-					},
-				},
-				drinks: {
-					courses: {
-						draught: { items: [] },
-						bottles: { items: [] },
-						cocktails: { items: [] },
-					},
-				},
-			},
+			name: "Burger",
+			description: "Cheese Burger on a bun",
+			price: 10,
+			allergens: "Wheat, Gltuen",
+			ingrdients: "Beef, Cheese, Lettuce, Tomato, Mustard",
+			assigned_menu: "dinner",
 		});
+		console.log("Burger added");
 	}
 
-	getAllMenus() {
+	getAllItems() {
 		return new Promise((resolve, reject) => {
-			this.db.find({}, (err, menus) => {
+			this.db.find({}, (err, items) => {
 				if (err) {
 					reject(err);
 				} else {
-					resolve(menus);
-					console.log("menus", menus[0].menu);
+					resolve(items);
+					console.log("items", items);
 				}
 			});
 		});
 	}
 
-	getALaCarte() {
+	getDinnerMenu() {
 		return new Promise((resolve, reject) => {
-			this.db.find({}, (err, menus) => {
+			this.db.find({ assigned_menu: "dinner" }, (err, items) => {
 				if (err) {
 					reject(err);
 				} else {
-					resolve(menus);
-					console.log("menus", menus[0].menu.a_la_carte);
+					resolve(items);
+					console.log("menus", items);
 				}
 			});
 		});
@@ -75,25 +49,12 @@ class Menu {
 
 	getLunchMenu() {
 		return new Promise((resolve, reject) => {
-			this.db.find({}, (err, menus) => {
+			this.db.find({ assigned_menu: "lunch" }, (err, items) => {
 				if (err) {
 					reject(err);
 				} else {
-					resolve(menus);
-					console.log("menus", menus[0].menu.lunch_menu);
-				}
-			});
-		});
-	}
-
-	getDrinksMenu() {
-		return new Promise((resolve, reject) => {
-			this.db.find({}, (err, menus) => {
-				if (err) {
-					reject(err);
-				} else {
-					resolve(menus);
-					console.log("menus", menus[0].menu.drinks);
+					resolve(items);
+					console.log("menus", items);
 				}
 			});
 		});
