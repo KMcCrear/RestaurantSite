@@ -5,18 +5,29 @@ const userDB = new userDAO();
 
 menuDB.init();
 
+exports.getHome = (req, res) => {
+	res.render("home");
+};
+
 exports.getMenus = (req, res) => {
-	res.send("<h1>test</h1>");
-	menuDB.getAllMenus();
+	res.render("menus");
+	menuDB.getAllItems();
 };
 
 exports.getDinnerMenu = (req, res) => {
-	res.send("<h1>A La Carte</h1>");
-	menuDB.getDinnerMenu();
+	menuDB
+		.getDinnerMenu()
+		.then((response) => {
+			res.render("dinnerMenu", { title: "Dinner", items: response });
+			console.log("Promise Resolved");
+		})
+		.catch((err) => {
+			console.log("Promise Rejected", err);
+		});
 };
 
 exports.getLunchMenu = (req, res) => {
-	res.send("<h1>Set Menu</h1>");
+	res.render("lunchMenu");
 	menuDB.getLunchMenu();
 };
 

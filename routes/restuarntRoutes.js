@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/restaurantController");
 
-router.get("/", controller.getMenus);
+router.get("/", controller.getHome);
+router.get("/menus", controller.getMenus);
 router.get("/menus/dinner", controller.getDinnerMenu);
-router.get("/menues/lunch", controller.getLunchMenu);
+router.get("/menus/lunch", controller.getLunchMenu);
 
 router.get("/login", controller.login);
 

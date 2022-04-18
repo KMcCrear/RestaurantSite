@@ -19,6 +19,25 @@ class Menu {
 			assigned_menu: "dinner",
 		});
 		console.log("Burger added");
+
+		this.db.insert({
+			name: "Pasta",
+			description: "Pasta",
+			price: 10,
+			allergens: "Wheat, Gltuen",
+			ingrdients: "Pasta",
+			assigned_menu: "dinner",
+		});
+
+		this.db.insert({
+			name: "Cheese Toastie",
+			description: "Toastie with chedder cheese",
+			price: 5,
+			allergens: "Wheat, Gltuen",
+			ingrdients: "Cheese",
+			assigned_menu: "lunch",
+		});
+		console.log("Cheese Toastie added");
 	}
 
 	getAllItems() {
