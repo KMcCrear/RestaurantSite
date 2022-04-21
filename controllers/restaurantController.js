@@ -1,5 +1,6 @@
 const userDAO = require("../models/userModel");
 const menuDAO = require("../models/menuModel");
+const { response } = require("express");
 const menuDB = new menuDAO();
 const userDB = new userDAO();
 
@@ -14,12 +15,12 @@ exports.getMenus = (req, res) => {
 	menuDB.getAllItems();
 };
 
-exports.getDinnerMenu = (req, res) => {
+exports.getDinner = (req, res) => {
 	menuDB
 		.getDinnerMenu()
 		.then((response) => {
 			res.render("dinnerMenu", { title: "Dinner", items: response });
-			console.log("Promise Resolved");
+			console.log("Promise Resolved", response);
 		})
 		.catch((err) => {
 			console.log("Promise Rejected", err);
@@ -27,8 +28,14 @@ exports.getDinnerMenu = (req, res) => {
 };
 
 exports.getLunchMenu = (req, res) => {
-	res.render("lunchMenu");
-	menuDB.getLunchMenu();
+	menuDB
+		.getLunchMenu()
+		.then((response) => {
+			res.render("lunchMenu", { title: "Lunch Menu", items: response });
+		})
+		.catch((err) => {
+			console.log("Promise Rejected", err);
+		});
 };
 
 exports.login = (req, res) => {

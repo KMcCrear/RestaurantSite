@@ -4,7 +4,7 @@ const controller = require("../controllers/restaurantController");
 
 router.get("/", controller.getHome);
 router.get("/menus", controller.getMenus);
-router.get("/menus/dinner", controller.getDinnerMenu);
+router.get("/menus/dinner", controller.getDinner);
 router.get("/menus/lunch", controller.getLunchMenu);
 
 router.get("/login", controller.login);
