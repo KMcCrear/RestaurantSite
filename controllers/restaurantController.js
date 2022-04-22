@@ -38,6 +38,27 @@ exports.getLunchMenu = (req, res) => {
 		});
 };
 
+exports.getMenuItem = (req, res) => {
+	res.render("addMenuItem");
+};
+
+exports.postMenuItem = (req, res) => {
+	if (!req.body.name) {
+		response.status(400).send("New Items must have a name");
+		return;
+	} else {
+		menuDB.addMenuItem(
+			req.body.name,
+			req.body.description,
+			req.body.price,
+			req.body.allergens,
+			req.body.ingredients,
+			req.body.assigned_menu
+		);
+		res.redirect("/menus");
+	}
+};
+
 exports.login = (req, res) => {
 	res.send("<h1>Login</h1>");
 	userDB.login(req.body.username, req.body.password);

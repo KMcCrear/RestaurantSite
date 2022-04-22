@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body>
+		<nav>{{>navbar}}</nav>
+		<h1>{{ title }}</h1>
+		<form method="post" role="form" action="/additem">
+			<div>
+				<label for="name" id="name">Name</label>
+				<input
+					type="text"
+					id="name"
+					name="name"
+					placeholder="Enter item Name"
+					required
+				/>
+			</div>
+			<div>
+				<label for="description" id="description">Description</label>
+				<input
+					type="text"
+					id="description"
+					name="description"
+					placeholder="Enter item description"
+					required
+				/>
+			</div>
+			<div>
+				<label for="price" id="price">Price</label>
+				<input
+					type="number"
+					id="price"
+					name="price"
+					placeholder="Enter Item Price"
+					required
+				/>
+			</div>
+			<div>
+				<label for="allergens" id="allergens">Allergens</label>
+				<input
+					type="text"
+					id="allergens"
+					name="allergens"
+					placeholder="Enter allergens"
+					required
+				/>
+			</div>
+			<div>
+				<label for="ingredients" id="ingredients">Ingredients</label>
+				<input
+					type="text"
+					id="ingredients"
+					name="ingredients"
+					placeholder="Enter Ingredients"
+					required
+				/>
+			</div>
+			<div>
+				<label for="assigned_menu" id="assigned_menu">Select Menu</label>
+				<select id="assigned_menu" name="assigned_menu">
+					<option value="null">Select</option>
+					<option value="dinner">Dinner</option>
+					<option value="lunch">Lunch</option>
+				</select>
+				<input type="submit" value="Enter Item" class="btn btn-primary"
+			</div>
+		</form>
+	</body>
+</html>

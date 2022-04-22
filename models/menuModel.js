@@ -15,7 +15,7 @@ class Menu {
 			description: "Cheese Burger on a bun",
 			price: 10,
 			allergens: "Wheat, Gltuen",
-			ingrdients: "Beef, Cheese, Lettuce, Tomato, Mustard",
+			ingredients: "Beef, Cheese, Lettuce, Tomato, Mustard",
 			assigned_menu: "dinner",
 		});
 		console.log("Burger added");
@@ -25,7 +25,7 @@ class Menu {
 			description: "Pasta",
 			price: 10,
 			allergens: "Wheat, Gltuen",
-			ingrdients: "Pasta",
+			ingredients: "Pasta",
 			assigned_menu: "dinner",
 		});
 
@@ -34,7 +34,7 @@ class Menu {
 			description: "Toastie with chedder cheese",
 			price: 5,
 			allergens: "Wheat, Gltuen",
-			ingrdients: "Cheese",
+			ingredients: "Cheese",
 			assigned_menu: "lunch",
 		});
 		console.log("Cheese Toastie added");
@@ -76,6 +76,25 @@ class Menu {
 					console.log("menus", items);
 				}
 			});
+		});
+	}
+
+	addMenuItem(name, description, price, allergens, ingredients, assigned_menu) {
+		let item = {
+			name: name,
+			description: description,
+			price: price,
+			allergens: allergens,
+			ingredients: ingredients,
+			assigned_menu: assigned_menu,
+		};
+		console.log("item created, item");
+		this.db.insert(item, (err, doc) => {
+			if (err) {
+				console.log("error inserting document", err);
+			} else {
+				console.log("item inserted into db", doc);
+			}
 		});
 	}
 }
