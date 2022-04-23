@@ -97,5 +97,19 @@ class Menu {
 			}
 		});
 	}
+
+	deleteItem(name) {
+		return new Promise((resolve, reject) => {
+			this.db.remove({ name: name }, (err, result) => {
+				if (err) {
+					console.log("error", err);
+					reject(err);
+				} else {
+					resolve(result);
+					console.log(`Item ${name} successfully deleted`);
+				}
+			});
+		});
+	}
 }
 module.exports = Menu;

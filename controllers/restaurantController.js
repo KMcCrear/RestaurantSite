@@ -59,6 +59,27 @@ exports.postMenuItem = (req, res) => {
 	}
 };
 
+exports.getDeleteItem = (req, res) => {
+	menuDB
+		.getAllItems()
+		.then((response) => {
+			res.render("deleteItem", { title: "Delete Menu Item", items: response });
+		})
+		.catch((err) => {
+			console.log("Respones Rejected", err);
+		});
+};
+
+exports.postDeleteItem = (req, res) => {
+	if (!req.body.name) {
+		response.status(400).send("Select an Item to delete");
+	} else {
+		menuDB.deleteItem(req.body.name);
+		console.log("delete");
+		res.redirect("/menus");
+	}
+};
+
 exports.login = (req, res) => {
 	res.send("<h1>Login</h1>");
 	userDB.login(req.body.username, req.body.password);

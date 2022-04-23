@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body>
+		<nav>{{>navbar}}</nav>
+		<h1>{{ title }}</h1>
+		<form method="post" role="form" action="/deleteitem">
+			<div>
+				<label for="name" id="name">Select Menu</label>
+				<select id="name" name="name">
+					<option value="null">Select</option>
+					{{#items}}
+					<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
+					{{/items}}
+				</select>
+				<input type="submit" value="Enter Item" class="btn btn-primary"
+			</div>
+		</form>
+
+		{{^items}}
+		No items
+		{{/items}}
+	</body>
+</html>

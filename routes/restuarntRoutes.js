@@ -8,6 +8,8 @@ router.get("/menus/dinner", controller.getDinner);
 router.get("/menus/lunch", controller.getLunchMenu);
 router.get("/menus/additem", controller.getMenuItem);
 router.post("/additem", controller.postMenuItem);
+router.get("/menus/deleteItem", controller.getDeleteItem);
+router.post("/deleteitem", controller.postDeleteItem);
 
 router.get("/login", controller.login);
 
