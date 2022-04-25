@@ -1,4 +1,6 @@
 const nedb = require("nedb");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 class User {
 	constructor(dbFilePath) {
@@ -18,14 +20,16 @@ class User {
 	}
 
 	addUser(username, password) {
-		return new Promise((resolve, reject) => {
-			this.db.insert({ username: username, password: password }, (err, res) => {
+		bcrypt.hash(password, saltRounds).then(function (hash) {
+			var entry = {
+				user: username,
+				password: hash,
+			};
+			this.db.insert(entry, (err) => {
 				if (err) {
-					console.log(err);
-					reject(err);
+					console.log("Can't insert user: ", username);
 				} else {
-					resolve(res);
-					console.log(`User ${username} successfully added to db`);
+					console.log("User successfully added: ", entry);
 				}
 			});
 		});
@@ -45,22 +49,21 @@ class User {
 		});
 	}
 
-	login(username, password) {
-		return new Promise((resolve, reject) => {
-			this.db.find(
-				{ username: username, password: password },
-				(err, result) => {
-					if (err) {
-						console.log(err);
-						reject(err);
-					} else {
-						resolve(result);
-						console.log("Logged in");
-					}
+	find(user, cb) {
+		this.db.find({ user: user }, (err, entries) => {
+			if (err) {
+				return cb(null, null);
+			} else {
+				if (entries.length == 0) {
+					return cb(null, null);
 				}
-			);
+				return cb(null, entries[0]);
+			}
 		});
 	}
 }
+
+const dao = User();
+dao.init();
 
 module.exports = User;
