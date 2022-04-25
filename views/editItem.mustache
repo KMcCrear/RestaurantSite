@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body>
+		<nav>{{>navbar}}</nav>
+		<h1>{{ title }}</h1>
+		<form method="post" role="form" action="/editItem">
+			<div>
+				<label for="name" id="name">Select Menu</label>
+				<select id="name" name="name">
+					<option value="null">Select</option>
+					{{#items}}
+					<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
+					{{/items}}
+				</select>
+				<label for="isAvailable" id="isAvailable"
+					>Is this item Available?</label
+				>
+				<select id="isAvailable" name="isAvailable">
+					<option value="null">Select</option>
+					<option value="false">False</option>
+					<option value="true">True</option>
+				</select>
+				<input type="submit" value="Enter Item" class="btn btn-primary"
+			</div>
+		</form>
+
+		{{^items}}
+		No items
+		{{/items}}
+	</body>
+</html>

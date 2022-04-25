@@ -10,6 +10,8 @@ router.get("/menus/additem", controller.getMenuItem);
 router.post("/additem", controller.postMenuItem);
 router.get("/menus/deleteItem", controller.getDeleteItem);
 router.post("/deleteitem", controller.postDeleteItem);
+router.get("/menus/editItem", controller.getEditItem);
+router.post("/editItem", controller.postEditItem);
 
 router.get("/login", controller.login);
 

@@ -59,6 +59,21 @@ exports.postMenuItem = (req, res) => {
 	}
 };
 
+exports.getEditItem = (req, res) => {
+	menuDB.getAllItems().then((response) => {
+		res.render("editItem", { title: "Edit Menu Item", items: response });
+	});
+};
+
+exports.postEditItem = (req, res) => {
+	if (!req.body.name) {
+		response.status(400).send("Name required to edit item");
+	} else {
+		menuDB.updateAvailability(req.body.name, JSON.parse(req.body.isAvailable));
+		res.redirect("/menus");
+	}
+};
+
 exports.getDeleteItem = (req, res) => {
 	menuDB
 		.getAllItems()
