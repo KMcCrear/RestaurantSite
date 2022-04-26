@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/restaurantController");
+const { login } = require("../auth/auth");
+const { verify } = require("../auth/auth");
 
+router.get("/login", controller.displayLogin); //Need to implement
+router.post("/login", login, controller.handleLogin); //Need to Implement
+router.get("/addUser", controller.displayRegister); //Need to implement
+router.post("/addUser", controller.postNewUser); // Need to implement
 router.get("/", controller.getHome);
 router.get("/menus", controller.getMenus);
 router.get("/menus/dinner", controller.getDinner);

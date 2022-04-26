@@ -16,7 +16,7 @@ class User {
 	init() {
 		this.db.insert({ username: "kylemccc", password: "password" });
 
-		console.log(`db entry ${username} inserted`);
+		return this;
 	}
 
 	addUser(username, password) {
@@ -63,7 +63,7 @@ class User {
 	}
 }
 
-const dao = User();
+const dao = new User();
 dao.init();
 
 module.exports = User;

@@ -6,6 +6,37 @@ const userDB = new userDAO();
 
 menuDB.init();
 
+exports.displayLogin = (req, res) => {
+	res.render("admin/login");
+};
+
+exports.handleLogin = (req, res) => {
+	res.render("admin/adminPage", { title: "Admin Page", user: "user" });
+};
+
+exports.displayRegister = (req, res) => {
+	res.render("admin/addUser");
+};
+
+exports.postNewUser = (req, res) => {
+	const user = req.body.username;
+	const password = req.body.password;
+
+	if (!user || !password) {
+		res.send(401, "No Username or Password");
+		return;
+	}
+	userDB.find(user, (err, u) => {
+		if (u) {
+			res.send(401, "User exists: ", user);
+			return;
+		}
+		userDB.addUser(user, password);
+		console.log("Register user", user, "Password", password);
+		res.redirect("/login");
+	});
+};
+
 exports.getHome = (req, res) => {
 	res.render("home");
 };

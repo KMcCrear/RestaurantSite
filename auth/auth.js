@@ -13,7 +13,7 @@ exports.login = (req, res, next) => {
 		}
 		if (!user) {
 			console.log("User ", username, " not found!");
-			return res.render("user/register");
+			return res.render("admin/register");
 		}
 		bcrypt.compare(password, user.password, (err, result) => {
 			if (result) {
@@ -24,7 +24,7 @@ exports.login = (req, res, next) => {
 				res.cookie("jwt", accessToken);
 				next();
 			} else {
-				return res.render("user/login");
+				return res.render("admin/login");
 			}
 		});
 	});
