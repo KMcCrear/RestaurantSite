@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
 const router = require("./routes/restuarntRoutes");
+require("dotenv").config();
 
-app.use(express.urlencoded({ extended: false }));
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+app.use(express.urlencoded({ extended: true }));
 
 const path = require("path");
 app.use("/", router);

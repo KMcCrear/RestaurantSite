@@ -2,7 +2,6 @@ const userDAO = require("../models/userModel");
 const menuDAO = require("../models/menuModel");
 const { response } = require("express");
 const menuDB = new menuDAO();
-const userDB = new userDAO();
 
 menuDB.init();
 
@@ -11,11 +10,12 @@ exports.displayLogin = (req, res) => {
 };
 
 exports.handleLogin = (req, res) => {
+	console.log("admin");
 	res.render("admin/adminPage", { title: "Admin Page", user: "user" });
 };
 
 exports.displayRegister = (req, res) => {
-	res.render("admin/addUser");
+	res.render("admin/register");
 };
 
 exports.postNewUser = (req, res) => {
@@ -26,15 +26,19 @@ exports.postNewUser = (req, res) => {
 		res.send(401, "No Username or Password");
 		return;
 	}
-	userDB.find(user, (err, u) => {
+	userDAO.find(user, (err, u) => {
 		if (u) {
-			res.send(401, "User exists: ", user);
+			res.status(401).send("user exists");
 			return;
 		}
-		userDB.addUser(user, password);
+		userDAO.addUser(user, password);
 		console.log("Register user", user, "Password", password);
 		res.redirect("/login");
 	});
+};
+
+exports.displayAdmin = (req, res) => {
+	res.render("admin/adminPage", { title: "Admin Page", user: "user" });
 };
 
 exports.getHome = (req, res) => {
@@ -124,9 +128,4 @@ exports.postDeleteItem = (req, res) => {
 		console.log("delete");
 		res.redirect("/menus");
 	}
-};
-
-exports.login = (req, res) => {
-	res.send("<h1>Login</h1>");
-	userDB.login(req.body.username, req.body.password);
 };

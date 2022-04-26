@@ -13,7 +13,7 @@ exports.login = (req, res, next) => {
 		}
 		if (!user) {
 			console.log("User ", username, " not found!");
-			return res.render("admin/register");
+			return res.redirect("/adduser");
 		}
 		bcrypt.compare(password, user.password, (err, result) => {
 			if (result) {
@@ -22,7 +22,7 @@ exports.login = (req, res, next) => {
 					expiresIn: 300,
 				});
 				res.cookie("jwt", accessToken);
-				next();
+				res.redirect("/admin");
 			} else {
 				return res.render("admin/login");
 			}
@@ -30,7 +30,7 @@ exports.login = (req, res, next) => {
 	});
 };
 
-exports.verify = (req, res, next) => {
+exports.verify = function (req, res, next) {
 	let accessToken = req.cookies.jwt;
 	if (!accessToken) {
 		return res.status(403).send();
@@ -40,6 +40,7 @@ exports.verify = (req, res, next) => {
 		payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
 		next();
 	} catch (e) {
+		//if an error occured return request unauthorized error
 		res.status(401).send();
 	}
 };

@@ -14,18 +14,22 @@ class User {
 		}
 	}
 	init() {
-		this.db.insert({ username: "kylemccc", password: "password" });
+		this.db.insert({
+			username: "admin",
+			password: "$2b$10$OImDjaq1WX9BEXc5hj0Lfe8wS6eGG0iWx.bNF4jaAw4qam4Av3ppe",
+		});
 
 		return this;
 	}
 
 	addUser(username, password) {
+		const that = this;
 		bcrypt.hash(password, saltRounds).then(function (hash) {
 			var entry = {
 				user: username,
 				password: hash,
 			};
-			this.db.insert(entry, (err) => {
+			that.db.insert(entry, (err) => {
 				if (err) {
 					console.log("Can't insert user: ", username);
 				} else {
@@ -66,4 +70,4 @@ class User {
 const dao = new User();
 dao.init();
 
-module.exports = User;
+module.exports = dao;

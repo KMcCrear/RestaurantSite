@@ -4,22 +4,21 @@ const controller = require("../controllers/restaurantController");
 const { login } = require("../auth/auth");
 const { verify } = require("../auth/auth");
 
-router.get("/login", controller.displayLogin); //Need to implement
-router.post("/login", login, controller.handleLogin); //Need to Implement
-router.get("/addUser", controller.displayRegister); //Need to implement
-router.post("/addUser", controller.postNewUser); // Need to implement
+router.get("/login", controller.displayLogin); //Need to implement view
+router.post("/login", login, controller.handleLogin); //Need to implement view
+router.get("/adduser", controller.displayRegister); //Need to implement view
+router.post("/adduser", controller.postNewUser); // Need to implement view
 router.get("/", controller.getHome);
 router.get("/menus", controller.getMenus);
 router.get("/menus/dinner", controller.getDinner);
 router.get("/menus/lunch", controller.getLunchMenu);
-router.get("/menus/additem", controller.getMenuItem);
-router.post("/additem", controller.postMenuItem);
-router.get("/menus/deleteItem", controller.getDeleteItem);
-router.post("/deleteitem", controller.postDeleteItem);
-router.get("/menus/editItem", controller.getEditItem);
-router.post("/editItem", controller.postEditItem);
-
-router.get("/login", controller.login);
+router.get("/menus/additem", verify, controller.getMenuItem);
+router.post("/additem", verify, controller.postMenuItem);
+router.get("/menus/deleteItem", verify, controller.getDeleteItem);
+router.post("/deleteitem", verify, controller.postDeleteItem);
+router.get("/menus/editItem", verify, controller.getEditItem);
+router.post("/editItem", verify, controller.postEditItem);
+router.get("/admin", verify, controller.displayAdmin);
 
 router.use(function (req, res) {
 	res.status(404);
