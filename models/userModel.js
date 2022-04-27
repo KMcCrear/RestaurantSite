@@ -15,7 +15,7 @@ class User {
 	}
 	init() {
 		this.db.insert({
-			username: "admin",
+			user: "admin",
 			password: "$2b$10$OImDjaq1WX9BEXc5hj0Lfe8wS6eGG0iWx.bNF4jaAw4qam4Av3ppe",
 		});
 

@@ -31,6 +31,11 @@
 			<li class="nav-item">
 				<a class="nav-link" href="#">Contact</a>
 			</li>
+			{{#user}}
+			<li class="nav-item">
+				<a id="logout" href="/logout" class="btn btn-primary"> Sign out </a>
+			</li>
+			{{/user}}
 		</ul>
 	</div>
 </nav>

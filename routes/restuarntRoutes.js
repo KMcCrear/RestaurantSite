@@ -19,6 +19,7 @@ router.post("/deleteitem", verify, controller.postDeleteItem);
 router.get("/menus/editItem", verify, controller.getEditItem);
 router.post("/editItem", verify, controller.postEditItem);
 router.get("/admin", verify, controller.displayAdmin);
+router.get("/logout", controller.logout);
 
 router.use(function (req, res) {
 	res.status(404);

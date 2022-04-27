@@ -129,3 +129,7 @@ exports.postDeleteItem = (req, res) => {
 		res.redirect("/menus");
 	}
 };
+
+exports.logout = (req, res) => {
+	res.clearCookie("jwt").status(200).redirect("/");
+};
