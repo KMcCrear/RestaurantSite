@@ -88,7 +88,8 @@ exports.postMenuItem = (req, res) => {
 			req.body.price,
 			req.body.allergens,
 			req.body.ingredients,
-			req.body.assigned_menu
+			req.body.assigned_menu,
+			JSON.parse(req.body.isAvailable)
 		);
 		res.redirect("/menus");
 	}
@@ -105,6 +106,31 @@ exports.postEditItem = (req, res) => {
 		response.status(400).send("Name required to edit item");
 	} else {
 		menuDB.updateAvailability(req.body.name, JSON.parse(req.body.isAvailable));
+		res.redirect("/menus");
+	}
+};
+
+exports.getAddToSpecials = (req, res) => {
+	menuDB.getAllItems().then((response) => {
+		res.render("addToSpecials", { title: "Add to Speiclas", items: response });
+	});
+};
+
+exports.handleSaveToSpecials = (req, res) => {
+	console.log("here");
+	if (!req.body.name) {
+		response.status(400).send("New Items must have a name");
+		return;
+	} else {
+		menuDB.addMenuItem(
+			req.body.name,
+			req.body.description,
+			req.body.price,
+			req.body.allergens,
+			req.body.ingredients,
+			"specials",
+			req.body.isAvailable
+		);
 		res.redirect("/menus");
 	}
 };

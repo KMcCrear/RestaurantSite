@@ -4,40 +4,30 @@
 		{{>header}}
 	</head>
 	<body>
-		<nav>{{>navbar}}</nav>
+		<header>
+			<nav>{{>navbar}}</nav>
+		</header>
 		<h1>{{ title }}</h1>
 		<form method="post" role="form" action="/editItem">
-			<div>
-				<div class="row mb-3">
-					<label
-						class="col-sm-2 col-form-label col-form-label-sm"
-						for="name"
-						id="name"
-						>Select Menu</label
-					>
-					<div class="col-sm-10">
-						<select class="form-select" id="name" name="name">
-							<option value="null">Select</option>
-							{{#items}}
-							<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
-							{{/items}}
-						</select>
-					</div>
+			<div class="card">
+				<div class="input-group mb-3">
+					<span for="name" id="name" class="input-group-text">Select Item</span>
+					<select class="form-select" id="name" name="name">
+						<option value="null">Select</option>
+						{{#items}}
+						<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
+						{{/items}}
+					</select>
 				</div>
-				<div class="row mb-3">
-					<label
-						class="col-sm-2 col-form-label col-form-label-sm"
-						for="isAvailable"
-						id="isAvailable"
-						>Is this item Available?</label
+				<div class="input-group mb-3">
+					<span for="isAvailable" id="isAvailable" class="input-group-text"
+						>Is this item available?</span
 					>
-					<div class="col-sm-10">
-						<select class="form-select" id="isAvailable" name="isAvailable">
-							<option selected>Select</option>
-							<option value="false">False</option>
-							<option value="true">True</option>
-						</select>
-					</div>
+					<select class="form-select" id="isAvailable" name="isAvailable">
+						<option selected>Select</option>
+						<option value="false">False</option>
+						<option value="true">True</option>
+					</select>
 				</div>
 				<input type="submit" value="Enter Item" class="btn btn-primary" />
 			</div>

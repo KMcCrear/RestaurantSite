@@ -8,6 +8,8 @@ router.get("/login", controller.displayLogin); //Need to implement view
 router.post("/login", login, controller.handleLogin); //Need to implement view
 router.get("/adduser", controller.displayRegister); //Need to implement view
 router.post("/adduser", controller.postNewUser); // Need to implement view
+router.get("/addtospecials", controller.getAddToSpecials);
+router.post("/addtospecials", controller.handleSaveToSpecials);
 router.get("/", controller.getHome);
 router.get("/menus", controller.getMenus);
 router.get("/menus/dinner", controller.getDinner);

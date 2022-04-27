@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body>
+		<nav>{{>navbar}}</nav>
+		<h1>{{ title }}</h1>
+
+		<form method="post" role="form" action="/addtospecials">
+			<div>
+				<div class="input-group mb-3">
+					<span for="name" id="name" class="input-group-text">Select Item</span>
+					<select class="form-select" id="name" name="name">
+						<option selected>Select</option>
+						{{#items}}
+						<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
+						{{/items}}
+					</select>
+					{{#items}}
+					<input
+						type="hidden"
+						value="{{ description }}"
+						name="{{ description }}"
+					/>
+					<input type="hidden" value="{{ price }}" name="{{ price }}" />
+					<input type="hidden" value="{{ allergens }}" name="{{ allergens }}" />
+					<input
+						type="hidden"
+						value="{{ ingredients }}"
+						name="{{ ingredients }}"
+					/>
+					<input
+						type="hidden"
+						name="assigned_menu"
+						value="{{ assigned_menu }}"
+					/>
+					<input type="hidden" value="{{ isAvailable }}" name="isAvailable" />
+					{{/items}}
+				</div>
+				<div class="col-sm-10">
+					<input
+						type="submit"
+						value="Save to Specials"
+						class="btn btn-primary"
+					/>
+				</div>
+			</div>
+		</form>
+
+		{{^items}}
+		No items
+		{{/items}}
+	</body>
+</html>
