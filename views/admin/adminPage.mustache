@@ -4,7 +4,40 @@
 		{{>header}}
 	</head>
 	<body>
-		<nav>{{>navbar}}</nav>
+		<header>
+			<nav>{{>navbar}}</nav>
+		</header>
 		<h1>{{ title }}</h1>
+		<main>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card text-center"">
+						<div class="card-body">
+							<h5 class="card-title">Edit Item</h5>
+							<p class="card-text">Edit menu items</p>
+							<a href="/menus/edititem" class="btn btn-primary">Edit Item</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card text-center"">
+						<div class="card-body">
+							<h5 class="card-title">Add Item</h5>
+							<p class="card-text">Add a new menu item</p>
+							<a href="/menus/additem" class="btn btn-primary">Add Item</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="card text-center">
+						<div class="card-body">
+							<h5 class="card-title">Add New User</h5>
+							<p class="card-text">Add a new admin user</p>
+							<a href="/adduser" class="btn btn-primary">Add User</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>
