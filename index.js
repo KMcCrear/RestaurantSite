@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 const path = require("path");
 app.use("/", router);
 const public = path.join(__dirname, "public");
+app.use(express.static(public));
 
 const mustache = require("mustache-express");
 app.engine("mustache", mustache());

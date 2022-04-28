@@ -18,7 +18,7 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Beef, Cheese, Lettuce, Tomato, Mustard",
 			assigned_menu: "dinner",
-			isAvailable: false,
+			isAvailable: true,
 		});
 		console.log("Burger added");
 
@@ -31,6 +31,15 @@ class Menu {
 			assigned_menu: "dinner",
 			isAvailable: true,
 		});
+		this.db.insert({
+			name: "Steak",
+			description: "Steak",
+			price: 20,
+			allergens: "Wheat, Gltuen",
+			ingredients: "Beef, Cheese, Lettuce, Tomato, Mustard",
+			assigned_menu: "dinner",
+			isAvailable: true,
+		});
 
 		this.db.insert({
 			name: "Cheese Toastie",
@@ -39,7 +48,7 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Cheese",
 			assigned_menu: "lunch",
-			isAvailable: false,
+			isAvailable: true,
 		});
 		console.log("Cheese Toastie added");
 	}

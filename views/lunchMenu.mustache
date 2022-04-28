@@ -5,16 +5,46 @@
 	</head>
 	<body>
 		<nav>{{>navbar}}</nav>
-		<h1>{{ title }}</h1>
-		{{#items}}
-		<div>
-			<h4>{{ name }}</h4>
-			<p>{{ description }}</p>
-			<p>{{ price }}</p>
-			<p>{{ allergens }}</p>
-			<p>{{ ingredients }}</p>
+		<div class="row align-items-center" style="margin-top: 30px">
+			<div
+				class="col-12 d-flex justify-content-center"
+				style="margin-bottom: 20px"
+			>
+				<h1>{{ title }}</h1>
+			</div>
 		</div>
-		{{/items}}
+
+		<div class="row align-items-center">
+			{{#items}}
+			<div class="col-md-4">
+				<div class="card text-center">
+					<div class="card-body">
+						<h5 class="card-title">{{ name }}</h5>
+						<p class="card-text">{{ description }}</p>
+						<p class="card-text">£{{ price }}</p>
+						<div class="collapse" id="{{ _id }}">
+							<div class="card card-body">
+								<p class="card-text">Ingredients: {{ ingredients }}</p>
+								<p class="card-text">Allergens: {{ allergens }}</p>
+							</div>
+						</div>
+						<p style="margin-top: 10px">
+							<button
+								class="btn btn-info"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#{{ _id }}"
+								aria-expanded="false"
+								aria-controls="collapseExample"
+							>
+								Ingredients and Allerges
+							</button>
+						</p>
+					</div>
+				</div>
+			</div>
+			{{/items}}
+		</div>
 
 		{{^items}}
 		No items
