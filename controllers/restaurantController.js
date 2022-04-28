@@ -33,7 +33,7 @@ exports.postNewUser = (req, res) => {
 		}
 		userDAO.addUser(user, password);
 		console.log("Register user", user, "Password", password);
-		res.redirect("/login");
+		res.redirect("/admin");
 	});
 };
 
@@ -117,21 +117,24 @@ exports.getAddToSpecials = (req, res) => {
 };
 
 exports.handleSaveToSpecials = (req, res) => {
-	console.log("here");
+	console.log("Finding item", req.body.name);
 	if (!req.body.name) {
 		response.status(400).send("New Items must have a name");
 		return;
 	} else {
-		menuDB.addMenuItem(
-			req.body.name,
-			req.body.description,
-			req.body.price,
-			req.body.allergens,
-			req.body.ingredients,
-			"specials",
-			req.body.isAvailable
-		);
-		res.redirect("/menus");
+		menuDB.find(req.body.name).then((response) => {
+			menuDB.addMenuItem(
+				response[0].name,
+				response[0].description,
+				response[0].price,
+				response[0].allergens,
+				response[0].ingredients,
+				"specials",
+				response[0].isAvailable
+			);
+			console.log("Item saved to specials");
+		});
+		res.redirect("/admin");
 	}
 };
 
@@ -144,6 +147,28 @@ exports.getDeleteItem = (req, res) => {
 		.catch((err) => {
 			console.log("Respones Rejected", err);
 		});
+};
+
+exports.getDeleteUser = (req, res) => {
+	userDAO
+		.findUsers()
+		.then((response) => {
+			res.render("deleteUser", { title: "Delete User", users: response });
+		})
+		.catch((err) => {
+			console.log("Response Rejected", err);
+		});
+};
+
+exports.postDeleteUser = (req, res) => {
+	if (!req.body.user) {
+		response.status(400).send("Must select a user");
+		return;
+	} else {
+		userDAO.deleteUser(req.body.user);
+		console.log(req.body.user, "has been deleted");
+		res.redirect("/admin");
+	}
 };
 
 exports.postDeleteItem = (req, res) => {

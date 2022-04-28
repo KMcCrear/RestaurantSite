@@ -73,6 +73,19 @@ class Menu {
 		});
 	}
 
+	find(name) {
+		return new Promise((resolve, reject) => {
+			this.db.find({ name: name }, (err, items) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(items);
+					console.log("Found Item: ", items);
+				}
+			});
+		});
+	}
+
 	getLunchMenu() {
 		return new Promise((resolve, reject) => {
 			this.db.find(

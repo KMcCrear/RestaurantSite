@@ -7,17 +7,17 @@
 		<nav>{{>navbar}}</nav>
 		<h1>{{ title }}</h1>
 
-		<form method="post" role="form" action="/deleteitem">
+		<form method="post" role="form" action="/deleteuser">
 			<div>
 				<div class="input-group mb-3">
 					<span for="name" id="name" class="input-group-text">Select Item</span>
-					<select class="form-select" id="name" name="name">
+					<select class="form-select" id="user" name="user">
 						<option selected>Select</option>
-						{{#items}}
-						<option name="{{ name }}" value="{{ name }}">
-							{{ name }} On Menu: {{ assigned_menu }}
+						{{#users}}
+						<option name="{{ user }}" value="{{ user }}">
+							{{ user }}
 						</option>
-						{{/items}}
+						{{/users}}
 					</select>
 				</div>
 				<div class="col-sm-10">
@@ -26,8 +26,8 @@
 			</div>
 		</form>
 
-		{{^items}}
+		{{^users}}
 		No items
-		{{/items}}
+		{{/users}}
 	</body>
 </html>

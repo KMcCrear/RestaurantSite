@@ -39,15 +39,29 @@ class User {
 		});
 	}
 
-	deleteUser(username) {
+	findUsers() {
 		return new Promise((resolve, reject) => {
-			this.db.remove({ username: username }, (err, result) => {
+			this.db.find({}, (err, result) => {
+				if (err) {
+					console.log(err);
+					reject(err);
+				} else {
+					console.log("Found users: ", result);
+					resolve(result);
+				}
+			});
+		});
+	}
+
+	deleteUser(user) {
+		return new Promise((resolve, reject) => {
+			this.db.remove({ user: user }, (err, result) => {
 				if (err) {
 					console.log(err);
 					reject(err);
 				} else {
 					resolve(result);
-					console.log(`user ${username} successfully deleted`);
+					console.log(`user ${user} successfully deleted`);
 				}
 			});
 		});
