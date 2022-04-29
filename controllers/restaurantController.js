@@ -46,15 +46,33 @@ exports.getHome = (req, res) => {
 };
 
 exports.getMenus = (req, res) => {
-	res.render("menus");
-	menuDB.getAllItems();
+	res.render("menus", { title: "Menus" });
 };
 
 exports.getDinner = (req, res) => {
+	let starters = [];
+	let mains = [];
+	let deserts = [];
 	menuDB
 		.getDinnerMenu()
 		.then((response) => {
-			res.render("dinnerMenu", { title: "Dinner", items: response });
+			for (let i = 0; i < response.length; i++) {
+				if (response[i].course == "starter") {
+					starters.push(response[i]);
+				}
+				if (response[i].course == "main") {
+					mains.push(response[i]);
+				}
+				if (response[i].course == "desert") {
+					deserts.push(response[i]);
+				}
+			}
+			res.render("dinnerMenu", {
+				title: "Dinner",
+				starters: starters,
+				mains: mains,
+				deserts: deserts,
+			});
 			console.log("Promise Resolved", response);
 		})
 		.catch((err) => {
@@ -63,10 +81,29 @@ exports.getDinner = (req, res) => {
 };
 
 exports.getLunchMenu = (req, res) => {
+	let starters = [];
+	let mains = [];
+	let deserts = [];
 	menuDB
 		.getLunchMenu()
 		.then((response) => {
-			res.render("lunchMenu", { title: "Lunch Menu", items: response });
+			for (let i = 0; i < response.length; i++) {
+				if (response[i].course == "starter") {
+					starters.push(response[i]);
+				}
+				if (response[i].course == "main") {
+					mains.push(response[i]);
+				}
+				if (response[i].course == "desert") {
+					deserts.push(response[i]);
+				}
+			}
+			res.render("lunchMenu", {
+				title: "Lunch Menu",
+				starters: starters,
+				mains: mains,
+				deserts: deserts,
+			});
 		})
 		.catch((err) => {
 			console.log("Promise Rejected", err);
@@ -89,6 +126,7 @@ exports.postMenuItem = (req, res) => {
 			req.body.allergens,
 			req.body.ingredients,
 			req.body.assigned_menu,
+			req.body.course,
 			JSON.parse(req.body.isAvailable)
 		);
 		res.redirect("/menus");

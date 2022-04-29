@@ -1,5 +1,6 @@
 const nedb = require("nedb");
 const { resolve } = require("path");
+const { mainModule } = require("process");
 
 class Menu {
 	constructor(dbFilePath) {
@@ -18,6 +19,7 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Beef, Cheese, Lettuce, Tomato, Mustard",
 			assigned_menu: "dinner",
+			course: "main",
 			isAvailable: true,
 		});
 		console.log("Burger added");
@@ -29,6 +31,7 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Pasta",
 			assigned_menu: "dinner",
+			course: "main",
 			isAvailable: true,
 		});
 		this.db.insert({
@@ -38,6 +41,7 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Beef, Cheese, Lettuce, Tomato, Mustard",
 			assigned_menu: "dinner",
+			course: "main",
 			isAvailable: true,
 		});
 
@@ -48,6 +52,17 @@ class Menu {
 			allergens: "Wheat, Gltuen",
 			ingredients: "Cheese",
 			assigned_menu: "lunch",
+			course: "main",
+			isAvailable: true,
+		});
+		this.db.insert({
+			name: "Garlic Bread",
+			description: "Garlic Bread",
+			price: 3,
+			allergens: "Wheat, Gltuen",
+			ingredients: "Bread Garlic",
+			assigned_menu: "dinner",
+			course: "starter",
 			isAvailable: true,
 		});
 		console.log("Cheese Toastie added");
@@ -60,7 +75,7 @@ class Menu {
 					reject(err);
 				} else {
 					resolve(items);
-					console.log("items", items);
+					//console.log("items", test);
 				}
 			});
 		});
@@ -151,6 +166,7 @@ class Menu {
 		allergens,
 		ingredients,
 		assigned_menu,
+		course,
 		isAvailable
 	) {
 		let item = {
@@ -160,6 +176,7 @@ class Menu {
 			allergens: allergens,
 			ingredients: ingredients,
 			assigned_menu: assigned_menu,
+			course: course,
 			isAvailable: isAvailable,
 		};
 		console.log("item created, item");
