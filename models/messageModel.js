@@ -1,0 +1,48 @@
+const nedb = require("nedb");
+
+class Message {
+	constructor(dbFilePath) {
+		if (dbFilePath) {
+			this.db = new nedb({ filename: dbFilePath, autoload: true });
+		} else {
+			this.db = new nedb();
+		}
+	}
+	init() {
+		this.db.insert({
+			name: "Kyle",
+			email: "kyle@gmail.com",
+			message: "Hello there",
+		});
+	}
+
+	getAllMessages() {
+		return new Promise((resolve, reject) => {
+			this.db.find({}, (err, items) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(items);
+					//console.log("items", test);
+				}
+			});
+		});
+	}
+
+	addMessage(name, email, message) {
+		let conact = {
+			name: name,
+			email: email,
+			message: message,
+		};
+		this.db.insert(conact, (err, doc) => {
+			if (err) {
+				console.log(err, "adding", conact);
+			} else {
+				console.log(conact, " Inserted");
+			}
+		});
+	}
+}
+
+module.exports = Message;

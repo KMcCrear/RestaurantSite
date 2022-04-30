@@ -31,6 +31,8 @@ router.get("/menus/specials", controller.getSpecials);
 router.get("/aboutus", (req, res) => {
 	res.render("aboutUs", { title: "About us" });
 });
+router.get("/contact", controller.getContact);
+router.post("/contact", controller.handleContact);
 
 router.use(function (req, res) {
 	res.status(404);

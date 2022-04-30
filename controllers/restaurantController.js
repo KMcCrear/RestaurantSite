@@ -1,7 +1,9 @@
 const userDAO = require("../models/userModel");
 const menuDAO = require("../models/menuModel");
+const messageDAO = require("../models/messageModel");
 const { response } = require("express");
 const menuDB = new menuDAO();
+const messageDB = new messageDAO();
 
 menuDB.init();
 
@@ -243,6 +245,19 @@ exports.getSpecials = (req, res) => {
 			deserts: deserts,
 		});
 	});
+};
+
+exports.getContact = (req, res) => {
+	res.render("contactUs", { title: "Contact Us" });
+};
+exports.handleContact = (req, res) => {
+	if (!req.body.name) {
+		response.status(400).send("Please enter a name to message us");
+		return;
+	} else {
+		messageDB.addMessage(req.body.name, req.body.email, req.body.message);
+		res.redirect("/contact");
+	}
 };
 
 exports.logout = (req, res) => {

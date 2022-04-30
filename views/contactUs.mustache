@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body>
+		<nav>{{>navbar}}</nav>
+		<div class="row align-items-center" style="margin-top: 30px">
+			<div
+				class="col-12 d-flex justify-content-center"
+				style="margin-bottom: 20px"
+			>
+				<h1>{{ title }}</h1>
+			</div>
+		</div>
+        <div class="row" style="margin-top: 20px;">
+            <div class="col d-flex justify-content-center">
+                <div class="col-sm-8">
+                    <div class="card text-center"">
+                        <div class="card-body">
+                            <h4 class="card-title">Enter Your Details</h4>
+                            <form method="post" role="form" action="/contact">
+                                <div class="input-group mb-3">
+                                    <label class="col-sm-1 col-form-label input-group-text" for="name" id="name"
+                                        >Name</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="Enter Your Full Name"
+                                        required
+                                    />
+                                </div> 
+                                <div class="input-group mb-3">
+                                    <label class="col-sm-1 col-form-label input-group-text" for="email" id="email"
+                                        >Email</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter Your Email Address"
+                                        required
+                                    />
+                                </div> 
+                                <div class="input-group mb-3">
+                                    <textarea
+                                        class="form-control"
+                                        id="message"
+                                        name="message"
+                                        placeholder="Your Message"
+                                        required
+                                    ></textarea>
+                                </div> 
+                                <div class="col-sm-1">
+                                    <input type="submit" value="Send" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+</html>
