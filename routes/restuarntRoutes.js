@@ -27,6 +27,7 @@ router.get("/", controller.getHome);
 router.get("/menus", controller.getMenus);
 router.get("/menus/dinner", controller.getDinner);
 router.get("/menus/lunch", controller.getLunchMenu);
+router.get("/menus/specials", controller.getSpecials);
 
 router.use(function (req, res) {
 	res.status(404);
