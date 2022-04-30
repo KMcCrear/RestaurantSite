@@ -46,7 +46,7 @@ exports.getHome = (req, res) => {
 };
 
 exports.getMenus = (req, res) => {
-	res.render("menus", { title: "Menus" });
+	res.render("menus", { title: "Our Menus" });
 };
 
 exports.getDinner = (req, res) => {
@@ -168,6 +168,7 @@ exports.handleSaveToSpecials = (req, res) => {
 				response[0].allergens,
 				response[0].ingredients,
 				"specials",
+				response[0].course,
 				response[0].isAvailable
 			);
 			console.log("Item saved to specials");

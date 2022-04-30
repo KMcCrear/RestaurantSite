@@ -1,3 +1,7 @@
+body {
+	overflow: hidden;
+}
+
 .btn {
 	border-radius: 0px;
 }
