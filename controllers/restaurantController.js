@@ -6,6 +6,7 @@ const menuDB = new menuDAO();
 const messageDB = new messageDAO();
 
 menuDB.init();
+messageDB.init();
 
 exports.displayLogin = (req, res) => {
 	res.render("admin/login");
@@ -258,6 +259,20 @@ exports.handleContact = (req, res) => {
 		messageDB.addMessage(req.body.name, req.body.email, req.body.message);
 		res.redirect("/contact");
 	}
+};
+
+exports.viewMessages = (req, res) => {
+	messageDB
+		.getAllMessages()
+		.then((response) => {
+			res.render("viewMessages", {
+				title: "View User Messages",
+				messages: response,
+			});
+		})
+		.catch((err) => {
+			console.log("Respones Rejected", err);
+		});
 };
 
 exports.logout = (req, res) => {

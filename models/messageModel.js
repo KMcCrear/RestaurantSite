@@ -14,6 +14,11 @@ class Message {
 			email: "kyle@gmail.com",
 			message: "Hello there",
 		});
+		this.db.insert({
+			name: "test",
+			email: "test@gmail.com",
+			message: "Well hello there",
+		});
 	}
 
 	getAllMessages() {

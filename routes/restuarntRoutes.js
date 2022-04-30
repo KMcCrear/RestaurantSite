@@ -21,6 +21,7 @@ router.post("/editItem", verify, controller.postEditItem);
 router.get("/admin", verify, controller.displayAdmin);
 router.get("/deleteuser", verify, controller.getDeleteUser);
 router.post("/deleteuser", verify, controller.postDeleteUser);
+router.get("/viewmessages", verify, controller.viewMessages);
 
 //User Pages
 router.get("/", controller.getHome);
