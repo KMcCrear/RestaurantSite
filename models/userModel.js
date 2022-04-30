@@ -6,7 +6,10 @@ class User {
 	constructor(dbFilePath) {
 		if (dbFilePath) {
 			//creating a concrete db to access
-			this.db = new nedb({ filename: dbFilePath, autoload: true });
+			this.db = new nedb({
+				filename: `../databases/${dbFilePath}`,
+				autoload: true,
+			});
 			console.log(`DB Connected to ${dbFilePath}`);
 		} else {
 			//Creating a db in memory

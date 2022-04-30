@@ -1,11 +1,12 @@
 const nedb = require("nedb");
-const { resolve } = require("path");
-const { mainModule } = require("process");
 
 class Menu {
 	constructor(dbFilePath) {
 		if (dbFilePath) {
-			this.db = new nedb({ filename: dbFilePath, autoload: true });
+			this.db = new nedb({
+				filename: `../databases/${dbFilePath}`,
+				autoload: true,
+			});
 		} else {
 			this.db = new nedb();
 		}

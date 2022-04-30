@@ -3,7 +3,11 @@ const nedb = require("nedb");
 class Message {
 	constructor(dbFilePath) {
 		if (dbFilePath) {
-			this.db = new nedb({ filename: dbFilePath, autoload: true });
+			this.db = new nedb({
+				filename: `../databases/${dbFilePath}`,
+				autoload: true,
+			});
+			console.log("db:", dbFilePath);
 		} else {
 			this.db = new nedb();
 		}
