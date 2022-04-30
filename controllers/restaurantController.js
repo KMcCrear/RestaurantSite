@@ -220,6 +220,31 @@ exports.postDeleteItem = (req, res) => {
 	}
 };
 
+exports.getSpecials = (req, res) => {
+	let starters = [];
+	let mains = [];
+	let deserts = [];
+	menuDB.getChefSpecials().then((response) => {
+		for (let i = 0; i < response.length; i++) {
+			if (response[i].course == "starter") {
+				starters.push(response[i]);
+			}
+			if (response[i].course == "main") {
+				mains.push(response[i]);
+			}
+			if (response[i].course == "desert") {
+				deserts.push(response[i]);
+			}
+		}
+		res.render("specials", {
+			title: "Chef Specials",
+			starters: starters,
+			mains: mains,
+			deserts: deserts,
+		});
+	});
+};
+
 exports.logout = (req, res) => {
 	res.clearCookie("jwt").status(200).redirect("/");
 };
