@@ -14,6 +14,10 @@ Web Development 2 Restaurant Web Application
 
 A live version of the site can be found here; https://restaurantsite-gcu.herokuapp.com/
 
+##
+
+Test Cases of the web application can be found here: https://caledonianac-my.sharepoint.com/:w:/g/personal/kmccre201_caledonian_ac_uk/ETwr-uU8pQdBvR_Rr-PfFnQB3Lv0GAU6gskJ6iYsq-l66g?e=TPQh5N
+
 ## Additonal Functionality
 
 1. Admin users can delete menu items - Allows for a modular approach to menu creation
