@@ -4,7 +4,7 @@ class Menu {
 	constructor(dbFilePath) {
 		if (dbFilePath) {
 			this.db = new nedb({
-				filename: `../databases/${dbFilePath}`,
+				filename: dbFilePath,
 				autoload: true,
 			});
 		} else {

@@ -1,0 +1,7 @@
+{"name":"Burger","description":"Cheese Burger on a bun","price":10,"allergens":"Wheat, Gltuen","ingredients":"Beef, Cheese, Lettuce, Tomato, Mustard","assigned_menu":"dinner","course":"main","isAvailable":true,"_id":"92zOMIrddkMIH2XK"}
+{"name":"Pasta","description":"Pasta","price":10,"allergens":"Wheat, Gltuen","ingredients":"Pasta","assigned_menu":"dinner","course":"main","isAvailable":true,"_id":"Ek7bbmGrUFzlfjZo"}
+{"name":"Steak","description":"Steak","price":20,"allergens":"Wheat, Gltuen","ingredients":"Beef, Cheese, Lettuce, Tomato, Mustard","assigned_menu":"dinner","course":"main","isAvailable":true,"_id":"jALVulnTkcRZiVVc"}
+{"name":"Cheese Toastie","description":"Toastie with chedder cheese","price":5,"allergens":"Wheat, Gltuen","ingredients":"Cheese","assigned_menu":"lunch","course":"main","isAvailable":true,"_id":"XGa935bFKLXe2Bvq"}
+{"name":"Garlic Bread","description":"Garlic Bread","price":3,"allergens":"Wheat, Gltuen","ingredients":"Bread Garlic","assigned_menu":"dinner","course":"starter","isAvailable":true,"_id":"EdeuhebrEUqKbElX"}
+{"name":"Ice Cream","description":"Ice Cream","price":4,"allergens":"Dairy","ingredients":"Dairy","assigned_menu":"dinner","course":"dessert","isAvailable":true,"_id":"YzzcYWXZNcqrijU5"}
+{"name":"Roast Chicken Wings","description":"Roast Chicken Wings with watermelon hot sauce, Hebridean blue cheese","price":"7","allergens":"Dairy","ingredients":"Chicken, watermelon hot sauce, blue cheese","assigned_menu":"dinner","course":"starter","isAvailable":true,"_id":"hwDUE37aWbOjIuZj"}

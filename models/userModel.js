@@ -7,7 +7,7 @@ class User {
 		if (dbFilePath) {
 			//creating a concrete db to access
 			this.db = new nedb({
-				filename: `../databases/${dbFilePath}`,
+				filename: dbFilePath,
 				autoload: true,
 			});
 			console.log(`DB Connected to ${dbFilePath}`);
@@ -84,7 +84,7 @@ class User {
 	}
 }
 
-const dao = new User();
+const dao = new User("users.db");
 dao.init();
 
 module.exports = dao;

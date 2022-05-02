@@ -2,8 +2,8 @@ const userDAO = require("../models/userModel");
 const menuDAO = require("../models/menuModel");
 const messageDAO = require("../models/messageModel");
 const { response } = require("express");
-const menuDB = new menuDAO();
-const messageDB = new messageDAO();
+const menuDB = new menuDAO("menu.db");
+const messageDB = new messageDAO("message.db");
 
 menuDB.init();
 messageDB.init();
