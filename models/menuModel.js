@@ -143,6 +143,42 @@ class Menu {
 		});
 	}
 
+	updateItem(
+		name,
+		description,
+		price,
+		allergens,
+		ingredients,
+		assigned_menu,
+		course,
+		isAvailable
+	) {
+		return new Promise((resolve, reject) => {
+			this.db.update(
+				{ name: name },
+				{
+					$set: {
+						description: description,
+						price: price,
+						allergens: allergens,
+						ingredients: ingredients,
+						assigned_menu: assigned_menu,
+						course: course,
+						isAvailable: isAvailable,
+					},
+				},
+				(err, item) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(item);
+						console.log(item, "Successfully Updated");
+					}
+				}
+			);
+		});
+	}
+
 	updateAvailability(name, isAvailable) {
 		return new Promise((resolve, reject) => {
 			this.db.update(

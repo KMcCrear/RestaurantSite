@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{{>header}}
+	</head>
+	<body style="overflow: hidden">
+		<header>
+			<nav>{{>navbar}}</nav>
+		</header>
+		<h1>{{ title }}</h1>
+		<form method="post" role="form" action="/selectitem">
+			<div class="card">
+				<div class="input-group mb-3">
+					<span for="name" id="name" class="input-group-text">Select Item</span>
+					<select class="form-select" id="name" name="name">
+						<option value="null">Select</option>
+						{{#items}}
+						<option name="{{ name }}" value="{{ name }}">{{ name }}</option>
+						{{/items}}
+					</select>
+				</div>
+			</div>
+			<input type="submit" value="Enter Item" class="btn btn-primary" />
+		</form>
+
+		{{^items}}
+		No items
+		{{/items}}
+	</body>
+</html>

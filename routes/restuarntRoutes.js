@@ -16,8 +16,9 @@ router.get("/menus/additem", verify, controller.getMenuItem);
 router.post("/additem", verify, controller.postMenuItem);
 router.get("/menus/deleteItem", verify, controller.getDeleteItem);
 router.post("/deleteitem", verify, controller.postDeleteItem);
-router.get("/menus/editItem", verify, controller.getEditItem);
-router.post("/editItem", verify, controller.postEditItem);
+router.get("/menus/selectitem", verify, controller.selectItem); //change to edit
+router.post("/selectitem", verify, controller.postSelectItem); //change to edit
+router.post("/edititem", controller.postEditItem);
 router.get("/admin", verify, controller.displayAdmin);
 router.get("/deleteuser", verify, controller.getDeleteUser);
 router.post("/deleteuser", verify, controller.postDeleteUser);

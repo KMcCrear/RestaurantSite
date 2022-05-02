@@ -136,8 +136,17 @@ exports.postMenuItem = (req, res) => {
 	}
 };
 
-exports.getEditItem = (req, res) => {
+exports.selectItem = (req, res) => {
 	menuDB.getAllItems().then((response) => {
+		res.render("selectEditItem", {
+			title: "Select Menu Item",
+			items: response,
+		});
+	});
+};
+
+exports.postSelectItem = (req, res) => {
+	menuDB.find(req.body.name).then((response) => {
 		res.render("editItem", { title: "Edit Menu Item", items: response });
 	});
 };
@@ -146,8 +155,17 @@ exports.postEditItem = (req, res) => {
 	if (!req.body.name) {
 		response.status(400).send("Name required to edit item");
 	} else {
-		menuDB.updateAvailability(req.body.name, JSON.parse(req.body.isAvailable));
-		res.redirect("/menus");
+		menuDB.updateItem(
+			req.body.name,
+			req.body.description,
+			req.body.price,
+			req.body.allergens,
+			req.body.ingredients,
+			req.body.assigned_menu,
+			req.body.course,
+			JSON.parse(req.body.isAvailable)
+		);
+		res.redirect("/admin");
 	}
 };
 
