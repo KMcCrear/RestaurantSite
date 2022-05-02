@@ -10,7 +10,6 @@ Web Development 2 Restaurant Web Application
 
 3. Navgate to - 'http://localhost:3001' in your browser
 
-
 ## Live Version
 
 A live version of the site can be found here; https://restaurantsite-gcu.herokuapp.com/
@@ -23,3 +22,4 @@ A live version of the site can be found here; https://restaurantsite-gcu.herokua
 4. Users can send messages to admins through the 'Contact Us' page - Enables the user to contact staff to give feedback
 5. Admins can view users messages from the admin pannel - Allows admins to view the messages users have sent
 6. Message model created to facilitate the message functionality
+7. Authentication and autherisation of users - Increases security and helps prevent Cryptographic failure, Injection and Access control related issues.
