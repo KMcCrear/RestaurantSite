@@ -5,10 +5,10 @@ const { login } = require("../auth/auth");
 const { verify } = require("../auth/auth");
 
 // Admin Pages
-router.get("/login", controller.displayLogin); //Need to implement view
-router.post("/login", login, controller.handleLogin); //Need to implement view
-router.get("/adduser", controller.displayRegister); //Need to implement view
-router.post("/adduser", controller.postNewUser); // Need to implement view
+router.get("/login", controller.displayLogin);
+router.post("/login", login, controller.handleLogin);
+router.get("/adduser", controller.displayRegister);
+router.post("/adduser", controller.postNewUser);
 router.get("/addtospecials", controller.getAddToSpecials);
 router.post("/addtospecials", controller.handleSaveToSpecials);
 router.get("/logout", controller.logout);
@@ -16,8 +16,8 @@ router.get("/menus/additem", verify, controller.getMenuItem);
 router.post("/additem", verify, controller.postMenuItem);
 router.get("/menus/deleteItem", verify, controller.getDeleteItem);
 router.post("/deleteitem", verify, controller.postDeleteItem);
-router.get("/menus/selectitem", verify, controller.selectItem); //change to edit
-router.post("/selectitem", verify, controller.postSelectItem); //change to edit
+router.get("/menus/selectitem", verify, controller.selectItem);
+router.post("/selectitem", verify, controller.postSelectItem);
 router.post("/edititem", controller.postEditItem);
 router.get("/admin", verify, controller.displayAdmin);
 router.get("/deleteuser", verify, controller.getDeleteUser);
