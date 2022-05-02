@@ -17,8 +17,8 @@ const mustache = require("mustache-express");
 app.engine("mustache", mustache());
 app.set("view engine", "mustache");
 
-const $PORT = process.env.PORT;
-//const $PORT = 3001;
+//const $PORT = process.env.PORT;
+const $PORT = 3001;
 
 app.listen($PORT, () => {
 	console.log(`Server atarted on port: ${$PORT}`);
