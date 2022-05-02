@@ -67,6 +67,17 @@ class Menu {
 			isAvailable: true,
 		});
 		console.log("Cheese Toastie added");
+
+		this.db.insert({
+			name: "Ice Cream",
+			description: "Ice Cream",
+			price: 4,
+			allergens: "Dairy",
+			ingredients: "Dairy",
+			assigned_menu: "dinner",
+			course: "dessert",
+			isAvailable: true,
+		});
 	}
 
 	getAllItems() {

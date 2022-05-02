@@ -55,7 +55,7 @@ exports.getMenus = (req, res) => {
 exports.getDinner = (req, res) => {
 	let starters = [];
 	let mains = [];
-	let deserts = [];
+	let desserts = [];
 	menuDB
 		.getDinnerMenu()
 		.then((response) => {
@@ -66,15 +66,15 @@ exports.getDinner = (req, res) => {
 				if (response[i].course == "main") {
 					mains.push(response[i]);
 				}
-				if (response[i].course == "desert") {
-					deserts.push(response[i]);
+				if (response[i].course == "dessert") {
+					desserts.push(response[i]);
 				}
 			}
 			res.render("dinnerMenu", {
 				title: "Dinner",
 				starters: starters,
 				mains: mains,
-				deserts: deserts,
+				desserts: desserts,
 			});
 			console.log("Promise Resolved", response);
 		})
@@ -86,7 +86,7 @@ exports.getDinner = (req, res) => {
 exports.getLunchMenu = (req, res) => {
 	let starters = [];
 	let mains = [];
-	let deserts = [];
+	let desserts = [];
 	menuDB
 		.getLunchMenu()
 		.then((response) => {
@@ -97,15 +97,15 @@ exports.getLunchMenu = (req, res) => {
 				if (response[i].course == "main") {
 					mains.push(response[i]);
 				}
-				if (response[i].course == "desert") {
-					deserts.push(response[i]);
+				if (response[i].course == "dessert") {
+					desserts.push(response[i]);
 				}
 			}
 			res.render("lunchMenu", {
 				title: "Lunch Menu",
 				starters: starters,
 				mains: mains,
-				deserts: deserts,
+				desserts: desserts,
 			});
 		})
 		.catch((err) => {
@@ -244,7 +244,7 @@ exports.postDeleteItem = (req, res) => {
 exports.getSpecials = (req, res) => {
 	let starters = [];
 	let mains = [];
-	let deserts = [];
+	let desserts = [];
 	menuDB.getChefSpecials().then((response) => {
 		for (let i = 0; i < response.length; i++) {
 			if (response[i].course == "starter") {
@@ -253,15 +253,15 @@ exports.getSpecials = (req, res) => {
 			if (response[i].course == "main") {
 				mains.push(response[i]);
 			}
-			if (response[i].course == "desert") {
-				deserts.push(response[i]);
+			if (response[i].course == "dessert") {
+				desserts.push(response[i]);
 			}
 		}
 		res.render("specials", {
 			title: "Chef Specials",
 			starters: starters,
 			mains: mains,
-			deserts: deserts,
+			desserts: desserts,
 		});
 	});
 };
