@@ -5,8 +5,8 @@ const { response } = require("express");
 const menuDB = new menuDAO("menu.db");
 const messageDB = new messageDAO("message.db");
 
-menuDB.init();
-messageDB.init();
+//menuDB.init();
+//messageDB.init();
 
 exports.displayLogin = (req, res) => {
 	res.render("admin/login");

@@ -85,6 +85,6 @@ class User {
 }
 
 const dao = new User("users.db");
-dao.init();
+//dao.init();
 
 module.exports = dao;
