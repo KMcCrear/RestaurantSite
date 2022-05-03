@@ -132,7 +132,7 @@ exports.postMenuItem = (req, res) => {
 			req.body.course,
 			JSON.parse(req.body.isAvailable)
 		);
-		res.redirect("/menus");
+		res.redirect("/admin");
 	}
 };
 
